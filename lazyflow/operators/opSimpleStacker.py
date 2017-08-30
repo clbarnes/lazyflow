@@ -43,7 +43,8 @@ class OpSimpleStacker(Operator):
             tagged_shape = slot.meta.getTaggedShape()
             del tagged_shape[stacked_axiskey]
             assert tuple(tagged_shape.values()) == nonstacked_shape, \
-                "Can't stack images whose shapes differ (other than the stacked axis itself)"
+                "Can't stack images whose shapes differ (other than the stacked axis itself): {} != {}"\
+                .format(tuple(tagged_shape.values()), nonstacked_shape)
 
         stacked_sizes = []
         stacked_channel_names = []
